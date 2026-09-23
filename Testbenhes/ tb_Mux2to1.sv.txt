@@ -1,0 +1,42 @@
+module tb_Mux2to1;
+
+    // Inputs to the MUX (we control these, so they are 'reg')
+    reg test_in0;
+    reg test_in1;
+    reg test_sel;
+    
+    // Output from the MUX (we just read this, so it is 'wire')
+    wire test_out;
+
+    // Create an instance of the MUX and connect the wires
+    Mux2to1 uut (
+        .in0(test_in0),
+        .in1(test_in1),
+        .sel(test_sel),
+        .out(test_out)
+    );
+
+    // Test process runs once
+    initial begin
+        // Print to screen every time a value changes
+        $monitor("Time = %0t | sel = %b, in1 = %b, in0 = %b ---> out = %b", $time, test_sel, test_in1, test_in0, test_out);
+
+        // Test case 1: Select in0
+        test_sel = 0; test_in0 = 0; test_in1 = 1;
+        #10; // Wait 10 time units
+
+        test_in0 = 1; test_in1 = 0;
+        #10;
+
+        // Test case 2: Select in1
+        test_sel = 1; test_in0 = 0; test_in1 = 1;
+        #10;
+
+        test_in0 = 1; test_in1 = 0
+        #10;
+
+        // End the simulation
+        $finish;
+    end
+
+endmodule
