@@ -50,9 +50,15 @@ module tb_ALU_System;
 endtask
     // Main Test Sequence
     initial begin
-        // Monitor
-        $monitor("Time = %0t | clk = %b | sel = %b | in_a = %d, in_b = %d ---> out = %d (carry=%b, zero=%b)", 
-                 $time, tb_clk, tb_op_sel, tb_in_a, tb_in_b, tb_out_result, tb_out_carry, tb_out_zero);
+
+    // Waveform generation
+    $dumpfile("alu_waveform.vcd");
+    $dumpvars(0, tb_ALU_System);
+
+    // Monitor
+    $monitor("Time = %0t | clk = %b | sel = %b | in_a = %d, in_b = %d ---> out = %d (carry=%b, zero=%b)", 
+             $time, tb_clk, tb_op_sel, tb_in_a, tb_in_b, tb_out_result, tb_out_carry, tb_out_zero);
+
 
         // --- Step 1: System Reset ---
         tb_clk = 0;
