@@ -5,7 +5,7 @@ This project implements an 8-bit Arithmetic Logic Unit (ALU) using Verilog HDL. 
 
 The design supports:
 - Addition
-- Subtraction (Two's complement)
+- Subtraction
 - Bitwise AND
 - Bitwise OR
 
