@@ -11,9 +11,9 @@ The design supports:
 
 ## Architecture & Module Structure
 The system features a **2-cycle pipeline latency** with fully registered inputs and outputs. 
-The top-level `ALU_System` integrates several distinct sub-modules to achieve this synchronization:
-- **Input Registers:** 8-bit registers for incoming data (A and B), and a 2-bit register to capture the operation selector (`op_sel`).
-- **Core Logic:** The `ALU_Core`, a purely combinational block that handles the mathematical routing.
+The top-level, ALU_System, integrates several distinct sub-modules to achieve this synchronization:
+- **Input Registers:** 8-bit registers for incoming data (A and B), and a 2-bit register to capture the operation selector (op_sel).
+- **Core Logic:** The ALU_Core, a purely combinational block that handles the mathematical routing.
 - **Output Registers:** An 8-bit register for the final computed result, alongside dedicated 1-bit registers to synchronize the Zero and Carry flags with the data output.
 
 ## Verification
